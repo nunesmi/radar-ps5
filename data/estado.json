@@ -1,0 +1,404 @@
+{
+ "alerted": {},
+ "last_seen": {
+  "Pelando|b6da5fbf-5b28-4ff0-ad0e-54dc2a57d742": {
+   "price": 3321.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|80c7b3f9-9796-4e7e-897e-79cc32bac44a": {
+   "price": 3461.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|93f9c5b4-2fc2-4d73-be64-5cc35960e57a": {
+   "price": 3321.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|534e6f40-6ffc-4a92-9872-c85745e7003a": {
+   "price": 3537.31,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|a7216119-fe91-4641-8e4c-53f9970475bb": {
+   "price": 3383.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|ea13030d-6e6a-494a-8de8-015139615768": {
+   "price": 3756.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|c49858b7-3a41-4081-9bef-8d98b0c971fa": {
+   "price": 3776.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|69154cdd-f6b9-4b70-bbcf-c26d14fbbd8c": {
+   "price": 3510.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|4b545252-a588-43c0-b427-0684041c7130": {
+   "price": 3671.25,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|ae98432d-51b4-49c6-8966-a4484e6ec724": {
+   "price": 3700.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|a4211c2b-7753-4dd3-a989-360a47ebe56b": {
+   "price": 3877.77,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|969c8a7b-6ed7-4c3c-8cf0-eb665db58ffc": {
+   "price": 3650.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|6b7f3341-8db0-4a9d-bd1c-6c4f308ef763": {
+   "price": 4480.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|e861c25b-bda1-4267-b3e6-e8496bdbb493": {
+   "price": 3419.1,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|1dc7256e-03b0-4686-95ac-a49832287cff": {
+   "price": 3869.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|b35334ad-d82f-4b9f-9974-e186380c4179": {
+   "price": 3925.55,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|fc2ae164-857f-46c7-963e-f98450686989": {
+   "price": 4395.09,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|b17e5669-aca2-43f5-9104-750b34bb90bc": {
+   "price": 3849.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|27d19089-36ea-4e8a-bee5-ca24092997ba": {
+   "price": 4050.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|84bc6d92-8fb2-43ea-96fd-ff1bdfd2230b": {
+   "price": 3994.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|2ecc2de7-cfbd-4989-b819-57588ecb4319": {
+   "price": 4524.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|2f427da4-d104-4293-b983-4b2a576417da": {
+   "price": 4432.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|ae6826a3-feb0-44dc-b4cf-f22caa2cf9da": {
+   "price": 4603.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|4b99b81c-4176-4e80-b4b0-60768361c890": {
+   "price": 3999.51,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|6b27a486-869d-4c50-bac5-aeb1f59737ca": {
+   "price": 3921.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|53dffe0d-051b-485c-8982-448e7b9d6930": {
+   "price": 3968.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|638d993d-4488-40b5-bd93-6c7574607d33": {
+   "price": 3689.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|f9ebd059-2c14-4d9a-8967-b071dba7e91d": {
+   "price": 3699.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|42f209f6-c6a7-4a32-943c-1bf1b8b3706b": {
+   "price": 3419.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|b8baeb0b-8d56-4c70-8c32-d5842e5e98b9": {
+   "price": 3999.99,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|bbec8a77-1677-4ae4-a941-f445c539cf63": {
+   "price": 3695.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|b7bbb821-15d2-4fc9-a4f3-fe3c5fd37202": {
+   "price": 6899.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|8ed8964f-dc2f-4936-b8d2-82f288e53ce8": {
+   "price": 6999.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|f095545a-1f90-49d2-9c26-ed838a69a721": {
+   "price": 6881.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|ea15de64-c2c8-4100-b3d0-07188cb3280c": {
+   "price": 6885.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|a57aeff1-9039-4348-a56d-31795bb4605e": {
+   "price": 6009.35,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|f2581cfb-7541-4912-80f7-357dcfecaa2a": {
+   "price": 875.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|891e3c54-a8b5-4fb1-94d8-190717b2b59d": {
+   "price": 295.0,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|b0e19257-5c38-4dde-952f-b979366d7e1a": {
+   "price": 305.23,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|fc301fa8-0e3d-42c7-b3e6-d588e3907f19": {
+   "price": 507.0,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|79387cf1-8d03-4aee-8a46-35d9af445c13": {
+   "price": 497.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|1d0840b4-207e-4716-b928-95348508a41d": {
+   "price": 375.81,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|c5e75027-928f-4d1d-8224-f1f2f203db32": {
+   "price": 989.1,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|e1a4841b-ff4c-4bc5-bdc7-d1fb9dbea58f": {
+   "price": 417.57,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|8ea22e9e-681b-4af8-a834-8a4487a2223a": {
+   "price": 348.0,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|4c36be97-c547-49e4-979b-44981c0ea1d9": {
+   "price": 309.1,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|c5accd7c-2034-421d-9a86-a18748ba1816": {
+   "price": 417.0,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|2bc276b2-9066-4cf5-adac-d0be22e2737a": {
+   "price": 486.68,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|08319481-fcaa-4ea1-a874-8fea4164009b": {
+   "price": 273.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|c116de2d-9c5e-4ad3-b602-541f8835a15b": {
+   "price": 273.53,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|ca6ec453-8bac-46f9-ac3f-7a1979bf69ad": {
+   "price": 319.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "Pelando|38792f77-4ecc-480c-b97b-bbd67f3b29d7": {
+   "price": 282.0,
+   "status": "expirada",
+   "ts": "2026-11-26T18:19:46+00:00"
+  },
+  "KaBuM!|kabum-989702": {
+   "price": 4649.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1032835": {
+   "price": 464.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1032834": {
+   "price": 464.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-934759": {
+   "price": 5114.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-636960": {
+   "price": 7999.0,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1081973": {
+   "price": 4999.0,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-394555": {
+   "price": 464.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1032838": {
+   "price": 464.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1080805": {
+   "price": 557.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1065182": {
+   "price": 557.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1004711": {
+   "price": 557.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-945665": {
+   "price": 510.57,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-713091": {
+   "price": 510.57,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1032839": {
+   "price": 464.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1065183": {
+   "price": 557.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1050570": {
+   "price": 4370.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-945695": {
+   "price": 464.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-401293": {
+   "price": 1394.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1004688": {
+   "price": 557.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-945694": {
+   "price": 510.57,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1087867": {
+   "price": 557.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1004689": {
+   "price": 557.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1087865": {
+   "price": 557.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1087866": {
+   "price": 557.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1003386": {
+   "price": 557.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1005434": {
+   "price": 599.0,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  },
+  "KaBuM!|kabum-1049973": {
+   "price": 4742.07,
+   "status": "ativa",
+   "ts": "2026-11-26T18:20:59+00:00"
+  }
+ },
+ "fail_streak": 0,
+ "health_alerted": false,
+ "last_run": "2026-11-26T18:20:59+00:00",
+ "last_ok_sources": 10
+}

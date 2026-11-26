@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar PS5</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#14171c;--muted:#5d6673;--line:#e3e6ea;--accent:#2b59c3;
+--exc:#b4231f;--imp:#c2570c;--boa:#1f7a3d;--mon:#5d6673;--des:#9aa1ab;--chip:#eef1f5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1115;--card:#171a20;--ink:#e8eaed;
+--muted:#9aa3ae;--line:#2a2f37;--accent:#7ea2ff;--exc:#ff6b63;--imp:#ff9a4d;--boa:#4fd07a;--mon:#9aa3ae;--des:#5d6673;--chip:#222730}}
+:root[data-theme="dark"]{--bg:#0f1115;--card:#171a20;--ink:#e8eaed;--muted:#9aa3ae;--line:#2a2f37;--accent:#7ea2ff;
+--exc:#ff6b63;--imp:#ff9a4d;--boa:#4fd07a;--mon:#9aa3ae;--des:#5d6673;--chip:#222730}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:22px;margin:0}h2{font-size:16px;margin:0 0 12px}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.status{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:13px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--boa)}.dot.warn{background:var(--imp)}.dot.bad{background:var(--exc)}
+.grid{display:grid;gap:12px}.kpis{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.kpi .v{font-size:24px;font-weight:650;font-variant-numeric:tabular-nums}.kpi .l{color:var(--muted);font-size:13px}
+.kpi .s{color:var(--muted);font-size:12px;margin-top:2px}
+.two{grid-template-columns:1fr;margin-bottom:16px}@media(min-width:900px){.two{grid-template-columns:2fr 1fr}}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+select,input{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 9px;font:inherit;font-size:14px}
+label.chk{display:flex;gap:6px;align-items:center;font-size:14px;color:var(--muted)}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{text-align:left;color:var(--muted);font-weight:500;border-bottom:1px solid var(--line);padding:6px 8px;white-space:nowrap}
+.tbl td{border-bottom:1px solid var(--line);padding:8px;vertical-align:top}
+.tbl td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.scroll{overflow-x:auto}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600;color:#fff;white-space:nowrap}
+.b-EXCEPCIONAL{background:var(--exc)}.b-IMPERDÍVEL{background:var(--imp)}.b-BOA{background:var(--boa)}
+.b-MONITORAR{background:var(--mon)}.b-DESCARTAR{background:var(--des)}
+.chip{display:inline-block;background:var(--chip);border-radius:6px;padding:1px 6px;font-size:12px;color:var(--muted)}
+.exp{opacity:.55}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.muted{color:var(--muted)}.small{font-size:12px}
+svg text{fill:var(--muted);font-size:11px}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--muted);margin-top:6px;flex-wrap:wrap}
+.legend span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;background:var(--c)}
+.tabs{display:flex;gap:6px;margin-bottom:12px}.tabs button{background:var(--chip);color:var(--ink);border:0;border-radius:8px;padding:7px 12px;font:inherit;cursor:pointer}
+.tabs button.on{background:var(--accent);color:#fff}
+.empty{color:var(--muted);padding:10px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div><h1>Radar PS5</h1><div class="muted small">Foco: PS5 Slim 1 TB com leitor de disco · fontes: Pelando e KaBuM!</div></div>
+  <div class="status"><span id="dot" class="dot"></span><span id="status">carregando…</span></div>
+</header>
+
+<section class="grid kpis" id="kpis"></section>
+
+<section class="grid two">
+  <div class="card">
+    <h2>Ranking: PS5 Slim 1 TB com leitor (ofertas ativas)</h2>
+    <div class="scroll"><table class="tbl" id="rank"></table></div>
+  </div>
+  <div class="card">
+    <h2>Lojas com melhor preço (PS5 com leitor, 30 dias)</h2>
+    <table class="tbl" id="stores"></table>
+    <h2 style="margin-top:18px">Cupons ativos</h2>
+    <div id="coupons"></div>
+  </div>
+</section>
+
+<section class="card" style="margin-bottom:16px">
+  <h2>Histórico de preços: PS5 Slim 1 TB com leitor</h2>
+  <div id="chart"></div>
+  <div class="legend"><span style="--c:var(--accent)">ofertas da comunidade</span><span style="--c:var(--boa)">preço de vitrine (loja)</span><span style="--c:var(--imp)">média de mercado usada</span></div>
+</section>
+
+<section class="card">
+  <div class="tabs"><button data-tab="main" class="on">Console principal</button><button data-tab="all">Todos os produtos</button></div>
+  <div class="filters">
+    <select id="fModel"></select><select id="fStore"></select><select id="fClass"></select>
+    <input id="fMax" type="number" placeholder="Preço máx. (R$)" min="0" step="50">
+    <label class="chk"><input id="fExp" type="checkbox"> mostrar expiradas</label>
+    <label class="chk"><input id="f24" type="checkbox" checked> só últimas 24 h</label>
+  </div>
+  <div class="scroll"><table class="tbl" id="list"></table></div>
+</section>
+<p class="muted small" style="margin-top:16px">Preços públicos coletados automaticamente. Confira sempre o anúncio, o vendedor e o modelo antes de comprar. Nenhum preço, cupom ou estoque é inventado: o que não foi confirmado aparece como "a confirmar".</p>
+</div>
+
+<script>
+const BRL = v => v == null ? "—" : v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+const ORDER = ["EXCEPCIONAL","IMPERDÍVEL","BOA OFERTA","MONITORAR","DESCARTAR"];
+const badge = c => `<span class="badge b-${(c||"").split(" ")[0]}">${c||"—"}</span>`;
+const esc = s => String(s ?? "").replace(/[&<>"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
+const ago = iso => { const m = Math.round((Date.now()-new Date(iso))/60000);
+  return m < 60 ? `há ${m} min` : m < 1440 ? `há ${Math.round(m/60)} h` : `há ${Math.round(m/1440)} d`; };
+let D, tab = "main";
+
+fetch("data.json?_=" + Date.now()).then(r => r.json()).then(d => { D = d; init(); }).catch(() => {
+  document.getElementById("status").textContent = "não foi possível carregar os dados";
+  document.getElementById("dot").className = "dot bad";
+});
+
+function init(){
+  const s = D.status, mins = (Date.now() - new Date(s.last_run))/60000;
+  const dot = document.getElementById("dot");
+  dot.className = "dot" + (mins > 45 || s.queries_ok === 0 ? " bad" : s.queries_ok < s.queries_total ? " warn" : "");
+  document.getElementById("status").textContent =
+    `última verificação ${ago(s.last_run)} (${new Date(s.last_run).toLocaleString("pt-BR")}) · ${s.queries_ok}/${s.queries_total} consultas ok`;
+
+  const main = D.main, base = D.baselines[main] || {};
+  const offers = D.offers;
+  const act = offers.filter(o => o.model === main && o.status === "ativa" && o.classe !== "DESCARTAR");
+  const best = act.slice().sort((a,b)=>a.price-b.price)[0];
+  const last24 = offers.filter(o => o.created_at >= D.offers_24h_cutoff && o.model === main);
+  document.getElementById("kpis").innerHTML = [
+    ["Melhor preço ativo agora", best ? BRL(best.price) : "nenhuma oferta ativa", best ? `${esc(best.store)} · ${best.classe}` : "fora das ofertas expiradas"],
+    ["Preço médio de mercado", BRL(base.tipico), esc(base.fonte || "")],
+    ["Menor preço registrado", BRL(base.minimo), "lojas confiáveis, sem kits"],
+    ["Ofertas do console em 24 h", String(last24.length), `${last24.filter(o=>o.status==="ativa").length} ainda ativas · ${last24.filter(o=>o.status==="ativa"&&o.classe!=="DESCARTAR").length} abaixo da média`],
+  ].map(([l,v,s]) => `<div class="card kpi"><div class="l">${l}</div><div class="v">${v}</div><div class="s">${s}</div></div>`).join("");
+
+  const rank = act.sort((a,b)=>ORDER.indexOf(a.classe)-ORDER.indexOf(b.classe) || a.price-b.price).slice(0,10);
+  document.getElementById("rank").innerHTML = rank.length ? "<tr><th>#</th><th>Oferta</th><th>Loja</th><th>Preço</th><th>Desc.</th><th>Classe</th></tr>" +
+    rank.map((o,i)=>`<tr><td>${i+1}</td><td><a href="${esc(o.offer_url||o.url)}" target="_blank" rel="noopener">${esc(o.title)}</a>${o.bundle?' <span class="chip">kit</span>':''}${o.coupon?` <span class="chip">cupom ${esc(o.coupon)}</span>`:''}</td><td>${esc(o.store)}</td><td class="num">${BRL(o.price)}</td><td class="num">${o.desconto==null?"—":o.desconto+"%"}</td><td>${badge(o.classe)}</td></tr>`).join("")
+    : '<tr><td class="empty">Nenhuma oferta ativa do console neste momento.</td></tr>';
+
+  const hist = (D.history[main] || []);
+  const byStore = {};
+  hist.forEach(h => { if (!byStore[h.store] || h.price < byStore[h.store].price) byStore[h.store] = h; });
+  const st = Object.values(byStore).sort((a,b)=>a.price-b.price).slice(0,8);
+  document.getElementById("stores").innerHTML = st.length ? st.map(h=>`<tr><td>${esc(h.store)}</td><td class="num">${BRL(h.price)}</td><td class="small muted">${new Date(h.ts).toLocaleDateString("pt-BR")}</td></tr>`).join("") : '<tr><td class="empty">Sem histórico ainda.</td></tr>';
+
+  const cps = offers.filter(o => o.coupon && o.status === "ativa");
+  document.getElementById("coupons").innerHTML = cps.length ? cps.map(o=>`<div style="margin-bottom:6px"><span class="chip">${esc(o.coupon)}</span> <a href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.title)}</a> <span class="muted small">${esc(o.store)} · ${BRL(o.price)}</span></div>`).join("") : '<div class="empty">Nenhum cupom confirmado em oferta ativa.</div>';
+
+  chart(hist, base.tipico);
+  filters();
+  document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => {
+    tab = b.dataset.tab; document.querySelectorAll(".tabs button").forEach(x=>x.classList.toggle("on", x===b)); filters(); });
+}
+
+function chart(hist, typical){
+  const el = document.getElementById("chart");
+  if (hist.length < 2) { el.innerHTML = '<div class="empty">O gráfico aparece quando houver pelo menos 2 registros.</div>'; return; }
+  const W = Math.max(320, el.clientWidth || 800), H = 240, P = {l:56,r:12,t:10,b:26};
+  const xs = hist.map(h=>+new Date(h.ts)), ys = hist.map(h=>h.price).concat(typical?[typical]:[]);
+  const x0=Math.min(...xs), x1=Math.max(...xs)||x0+1, y0=Math.min(...ys)*0.97, y1=Math.max(...ys)*1.03;
+  const X = t => P.l + (t-x0)/((x1-x0)||1)*(W-P.l-P.r), Y = v => P.t + (1-(v-y0)/(y1-y0))*(H-P.t-P.b);
+  let g = "";
+  for (let i=0;i<=4;i++){ const v=y0+(y1-y0)*i/4; g+=`<line x1="${P.l}" x2="${W-P.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${P.l-6}" y="${Y(v)+4}" text-anchor="end">${Math.round(v).toLocaleString("pt-BR")}</text>`; }
+  [x0,(x0+x1)/2,x1].forEach((t,i)=>{ g+=`<text x="${X(t)}" y="${H-6}" text-anchor="${["start","middle","end"][i]}">${(x1-x0) < 2*864e5 ? new Date(t).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}) : new Date(t).toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"})}</text>`; });
+  if (typical) g += `<line x1="${P.l}" x2="${W-P.r}" y1="${Y(typical)}" y2="${Y(typical)}" stroke="var(--imp)" stroke-dasharray="5 4"/>`;
+  hist.forEach(h => { g += `<circle cx="${X(+new Date(h.ts))}" cy="${Y(h.price)}" r="4" fill="${h.kind==="listing"?"var(--boa)":"var(--accent)"}" opacity="${h.status==="ativa"?1:.55}"><title>${esc(h.store)} · ${BRL(h.price)} · ${new Date(h.ts).toLocaleString("pt-BR")}\n${esc(h.title)}</title></circle>`; });
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="Histórico de preços">${g}</svg>`;
+}
+
+function filters(){
+  const offers = D.offers.filter(o => tab === "all" || o.model === D.main);
+  const fill = (id, label, vals, fmt=v=>v) => { const el=document.getElementById(id), cur=el.value;
+    el.innerHTML = `<option value="">${label}</option>` + vals.map(v=>`<option value="${esc(v)}">${esc(fmt(v))}</option>`).join(""); el.value = vals.includes(cur)?cur:""; };
+  fill("fModel","Todos os modelos",[...new Set(offers.map(o=>o.model))], v=>D.labels[v]||v);
+  fill("fStore","Todas as lojas",[...new Set(offers.map(o=>o.store))].sort());
+  fill("fClass","Todas as classificações",ORDER);
+  ["fModel","fStore","fClass","fMax","fExp","f24"].forEach(id => document.getElementById(id).oninput = render);
+  render();
+}
+
+function render(){
+  const v = id => document.getElementById(id), max = parseFloat(v("fMax").value);
+  let rows = D.offers.filter(o => (tab === "all" || o.model === D.main)
+    && (!v("fModel").value || o.model === v("fModel").value)
+    && (!v("fStore").value || o.store === v("fStore").value)
+    && (!v("fClass").value || o.classe === v("fClass").value)
+    && (isNaN(max) || o.price <= max)
+    && (v("fExp").checked || o.status === "ativa")
+    && (!v("f24").checked || o.kind === "listing" || o.created_at >= D.offers_24h_cutoff));
+  rows.sort((a,b)=>ORDER.indexOf(a.classe)-ORDER.indexOf(b.classe) || a.price-b.price);
+  v("list").innerHTML = rows.length ? "<tr><th>Produto</th><th>Oferta</th><th>Loja</th><th>Preço</th><th>Desc. real</th><th>Classe</th><th>Status</th></tr>" +
+    rows.map(o=>`<tr class="${o.status==="ativa"?"":"exp"}"><td class="small">${esc(D.labels[o.model]||o.model)}</td><td><a href="${esc(o.offer_url||o.url)}" target="_blank" rel="noopener">${esc(o.title)}</a>${o.kind==="deal"?` <a class="small" href="${esc(o.url)}" target="_blank" rel="noopener">(post)</a>`:''}${o.coupon?` <span class="chip">cupom ${esc(o.coupon)}</span>`:''}<div class="small muted">${esc(o.motivo||"")}</div></td><td>${esc(o.store)}<div class="small muted">${o.trust==="alta"?"confiável":o.trust==="media"?"marketplace":"não verificada"}</div></td><td class="num">${BRL(o.price)}${o.price_card&&o.price_card!==o.price?`<div class="small muted">cartão ${BRL(o.price_card)}</div>`:""}</td><td class="num">${o.desconto==null?"—":o.desconto+"%"}</td><td>${badge(o.classe)}</td><td class="small">${o.status}${o.kind==="deal"?`<div class="muted">${ago(o.created_at)}</div>`:""}</td></tr>`).join("")
+    : '<tr><td class="empty">Nenhuma oferta com esses filtros.</td></tr>';
+}
+</script>
+</body>
+</html>
