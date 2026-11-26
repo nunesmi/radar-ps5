@@ -100,6 +100,78 @@ def pelando_details(deal: dict) -> dict:
     return deal
 
 
+# --------------------------------------------------------------------------- Telegram
+# Prévia pública dos canais (t.me/s/<canal>), feita para ser lida sem login.
+# Funciona a partir de servidores na nuvem, ao contrário do site do Pelando.
+_STORE_HINTS = [
+    (r"amzn\.|amazon", "Amazon"), (r"meli\.la|mercadoli", "Mercado Livre"),
+    (r"magalu|magazineluiza", "Magalu"), (r"kabum", "KaBuM!"), (r"shopee", "Shopee"),
+    (r"casasbahia", "Casas Bahia"), (r"pontofrio|\bponto\b", "Ponto"), (r"fastshop", "Fast Shop"),
+    (r"carrefour", "Carrefour"), (r"aliexpress", "AliExpress"), (r"americanas", "Americanas"),
+    (r"netshoes", "Netshoes"), (r"havan", "Havan"),
+]
+_PRICE = re.compile(r"R\$\s*([\d.]+(?:,\d{1,2})?)")
+_COUPON = re.compile(r"(?i:cupo[mn]s?)\s*:?\s*([A-Z0-9]{4,30})\b")
+
+
+def _tg_text(fragment: str) -> str:
+    t = re.sub(r"<br\s*/?>", "\n", fragment)
+    t = re.sub(r'<a href="([^"]+)"[^>]*>.*?</a>', r" \1 ", t, flags=re.S)
+    return html.unescape(re.sub(r"<[^>]+>", "", t)).strip()
+
+
+def telegram_search(channel_query: str) -> list[dict]:
+    channel, _, query = channel_query.partition("?")
+    url = f"https://t.me/s/{channel}" + (f"?q={urllib.parse.quote(query)}" if query else "")
+    page = http.get(url)
+    blocks = re.findall(
+        r'data-post="([^"]+)".*?<div class="tgme_widget_message_text js-message_text"[^>]*>(.*?)</div>'
+        r'.*?<time datetime="([^"]+)"', page, re.S)
+    out = []
+    now = datetime.now(timezone.utc)
+    for post, frag, ts in blocks:
+        text = _tg_text(frag)
+        lines = [l.strip() for l in text.splitlines() if l.strip()]
+        if not lines:
+            continue
+        m = _PRICE.search(text)
+        if not m:
+            continue
+        price = float(m.group(1).replace(".", "").replace(",", "."))
+        links = re.findall(r"https?://\S+", text)
+        store = ""
+        sm = re.search(r"📍\s*(.+)", text)
+        if sm:
+            store = sm.group(1).strip()
+        else:
+            blob = " ".join(links + lines[-3:]).lower()
+            for pat, name in _STORE_HINTS:
+                if re.search(pat, blob):
+                    store = name
+                    break
+        cm = _COUPON.search(text)
+        created = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+        age_min = (now - created).total_seconds() / 60
+        out.append({
+            "source": f"Telegram @{channel}",
+            "id": post,
+            "title": lines[0],
+            "store": store,
+            "price": price,
+            "price_card": None,
+            # o canal não informa quando a oferta acaba: consideramos ativa por 90 min
+            "status": "ativa" if age_min <= 90 else "expirada",
+            "created_at": created.isoformat(timespec="seconds"),
+            "url": f"https://t.me/{post}",
+            "offer_url": links[0] if links else f"https://t.me/{post}",
+            "coupon": cm.group(1) if cm else None,
+            "cashback": None,
+            "conditions": " · ".join(l for l in lines[1:] if not l.startswith("http"))[:200],
+            "kind": "deal",
+        })
+    return out
+
+
 # --------------------------------------------------------------------------- KaBuM!
 def kabum_search(slug: str) -> list[dict]:
     url = "https://www.kabum.com.br/busca/" + slug

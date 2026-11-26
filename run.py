@@ -25,6 +25,7 @@ def now_iso():
 def collect():
     items, logs = [], []
     jobs = [("Pelando", q, sources.pelando_search) for q in config.PELANDO_QUERIES]
+    jobs += [("Telegram", q, sources.telegram_search) for q in config.TELEGRAM_QUERIES]
     jobs += [("KaBuM!", q, sources.kabum_search) for q in config.KABUM_QUERIES]
     for src, q, fn in jobs:
         try:
@@ -97,7 +98,12 @@ def main():
         prev = state["alerted"].get(key)
         if prev and it["price"] > prev["price"] - config.REALERT_DROP:
             continue  # já avisado
-        if it["kind"] == "deal":
+        # a mesma oferta pode aparecer no site do Pelando e no Telegram: assinatura loja+modelo+preço
+        sig = f"{it['model']}|{norm(it['store'])}|{round(it['price'])}"
+        sig_ts = state.setdefault("alerted_sig", {}).get(sig)
+        if sig_ts and sig_ts >= (datetime.now(timezone.utc) - timedelta(hours=12)).isoformat():
+            continue
+        if it["source"] == "Pelando":
             sources.pelando_details(it)
             if it["status"] != "ativa":
                 continue
@@ -108,12 +114,16 @@ def main():
             "vendedor": it["store"] if it["kind"] == "listing" else None,
             "pagamento": ("Pix (à vista); cartão no valor indicado" if it["kind"] == "listing"
                           else "conforme o post (Pix/cartão/cupom)"),
-            "observacao": it["motivo"] + (f". {it['model_note']}" if it.get("model_note") else ""),
+            "observacao": it["motivo"] + (f". {it['model_note']}" if it.get("model_note") else "")
+                          + (f". Post: {it['conditions']}" if it.get("conditions") else "")
+                          + (". Oferta vista em canal do Telegram: o canal não informa se ela já acabou — abra rápido"
+                             if it["source"].startswith("Telegram") else ""),
             "fonte_media": it.get("fonte_media", ""),
         }
         if not DRY:
             notify.send(notify.build_alert(alert))
             state["alerted"][key] = {"price": it["price"], "ts": ts}
+            state["alerted_sig"][sig] = ts
         else:
             print(notify.build_alert(alert)); print("-" * 40)
         sent += 1
@@ -151,7 +161,7 @@ def write_dashboard(evaluated, obs, bases, logs, state, ts):
         offers.append({k: it.get(k) for k in (
             "source", "id", "title", "store", "price", "price_card", "status", "kind", "model",
             "bundle", "classe", "desconto", "queda", "motivo", "url", "offer_url", "coupon",
-            "created_at", "trust", "installments")})
+            "created_at", "trust", "installments", "conditions")})
     history = {}
     for r in obs:
         if r["model"] in config.REFERENCE and r["price"]:

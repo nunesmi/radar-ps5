@@ -12,6 +12,18 @@ PELANDO_QUERIES = [
     "dualsense",
 ]
 
+# Canais públicos do Telegram: "canal?busca".
+#   pelandobr  = Pelando Promoções (canal oficial do Pelando, ~54 mil inscritos)
+#   cjpromos   = CJ - Promoções (games e hardware, ~41 mil inscritos)
+TELEGRAM_QUERIES = [
+    "pelandobr?ps5",
+    "pelandobr?playstation 5",
+    "pelandobr?dualsense",
+    "cjpromos?ps5",
+    "cjpromos?playstation 5",
+    "cjpromos?dualsense",
+]
+
 KABUM_QUERIES = [
     "ps5-slim",
     "playstation-5-slim-midia-fisica",
