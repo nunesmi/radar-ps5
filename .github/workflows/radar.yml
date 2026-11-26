@@ -3,7 +3,12 @@ name: Radar PS5
 on:
   schedule:
     - cron: "*/10 * * * *"   # a cada 10 min (o GitHub pode atrasar alguns minutos)
-  workflow_dispatch: {}       # botão "Run workflow" para rodar na hora
+  workflow_dispatch:          # botão "Run workflow" para rodar na hora
+    inputs:
+      teste_telegram:
+        description: "Só enviar uma mensagem de teste no Telegram"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -26,13 +31,22 @@ jobs:
       - name: Testes rápidos
         run: python -m unittest discover -s tests
 
+      - name: Teste do Telegram
+        if: ${{ inputs.teste_telegram }}
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python run.py --test-telegram
+
       - name: Verificar ofertas
+        if: ${{ !inputs.teste_telegram }}
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python run.py
 
       - name: Salvar histórico e painel
+        if: ${{ !inputs.teste_telegram }}
         run: |
           git config user.name "radar-bot"
           git config user.email "radar-bot@users.noreply.github.com"

@@ -189,4 +189,8 @@ def write_dashboard(evaluated, obs, bases, logs, state, ts):
 
 
 if __name__ == "__main__":
+    if "--test-telegram" in sys.argv:
+        ok = notify.send("✅ Radar PS5 conectado! Os alertas de promoção vão chegar aqui.")
+        print("teste do Telegram:", "enviado" if ok else "FALHOU (confira os secrets)")
+        sys.exit(0 if ok else 1)
     main()
