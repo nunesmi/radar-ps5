@@ -109,6 +109,9 @@ CLASS_RULES = {
     "BOA OFERTA": (0.05, 200.0),
 }
 ALERT_CLASSES_MAIN = {"EXCEPCIONAL", "IMPERDÍVEL"}
+# Pedido da usuária (26/11/2026): avisar TODA oferta do PS5 Slim 1 TB com leitor
+# de loja confiável a partir deste preço para baixo, qualquer que seja a classificação.
+ALERT_MAX_PRICE_MAIN = 4500.0
 ALERT_CLASSES_SECONDARY = {"EXCEPCIONAL"}
 
 # Preço de console abaixo disto é tratado como possível erro de precificação

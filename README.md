@@ -28,6 +28,9 @@ e manda alertas pelo **Telegram** só para ofertas EXCEPCIONAIS ou IMPERDÍVEIS.
 | MONITORAR | abaixo da média, mas pouco | — |
 | DESCARTAR | igual/acima da média, loja não confiável ou modelo errado | — |
 
+**Além disso, toda oferta ativa do PS5 Slim 1 TB com leitor de loja confiável por até R$ 4.500
+(`ALERT_MAX_PRICE_MAIN`) gera alerta, qualquer que seja a classificação.**
+
 Produtos secundários só alertam quando EXCEPCIONAIS **e** no menor preço já visto (±5%).
 Console abaixo de R$ 2.500 é sinalizado como **possível erro de preço** (risco de cancelamento).
 

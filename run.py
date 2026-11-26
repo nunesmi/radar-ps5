@@ -92,7 +92,10 @@ def main():
             continue
         is_main = it["model"] == config.MAIN_PRODUCT
         wanted = config.ALERT_CLASSES_MAIN if is_main else config.ALERT_CLASSES_SECONDARY
-        if it["classe"] not in wanted:
+        # console principal: avisa TODA oferta de loja confiável até o preço máximo configurado
+        under_max = (is_main and it["trust"] is not None
+                     and it["price"] <= config.ALERT_MAX_PRICE_MAIN)
+        if it["classe"] not in wanted and not under_max:
             continue
         key = f"{it['source']}|{it['id']}"
         prev = state["alerted"].get(key)
