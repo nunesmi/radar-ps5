@@ -196,4 +196,17 @@ if __name__ == "__main__":
         ok = notify.send("✅ Radar PS5 conectado! Os alertas de promoção vão chegar aqui.")
         print("teste do Telegram:", "enviado" if ok else "FALHOU (confira os secrets)")
         sys.exit(0 if ok else 1)
-    main()
+    if "--loop" in sys.argv:
+        # Várias verificações seguidas numa mesma execução do GitHub Actions:
+        #   python run.py --loop 5 --every 240   -> 5 verificações, 4 min de intervalo
+        n = int(sys.argv[sys.argv.index("--loop") + 1])
+        every = int(sys.argv[sys.argv.index("--every") + 1]) if "--every" in sys.argv else 240
+        for i in range(n):
+            try:
+                main()
+            except Exception as e:  # uma falha não derruba as próximas verificações
+                print(f"verificação {i + 1} falhou: {type(e).__name__}: {e}")
+            if i < n - 1:
+                time.sleep(every)
+    else:
+        main()

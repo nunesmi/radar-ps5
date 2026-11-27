@@ -1,17 +1,28 @@
 name: Radar PS5
 
+# Como o agendamento do GitHub (cron) atrasa ou pula execuções, o radar funciona em
+# "corrente": cada execução faz 5 verificações (uma a cada 4 min, ~17 min no total) e,
+# ao terminar, dispara a próxima. O cron fica só como reserva para reiniciar a corrente
+# se ela quebrar. Depois de CORRENTE_ATE, volta a rodar só pelo cron.
+env:
+  CORRENTE_ATE: "2026-12-01"
+
 on:
   schedule:
-    - cron: "*/10 * * * *"   # a cada 10 min (o GitHub pode atrasar alguns minutos)
-  workflow_dispatch:          # botão "Run workflow" para rodar na hora
+    - cron: "7,37 * * * *"   # reserva: reinicia a corrente se ela parar
+  workflow_dispatch:          # botão "Run workflow" (e o disparo automático da corrente)
     inputs:
       teste_telegram:
         description: "Só enviar uma mensagem de teste no Telegram"
         type: boolean
         default: false
+  push:                       # atualizar o código já inicia uma execução
+    branches: [main]
+    paths: ["radar/**", "run.py", ".github/workflows/**"]
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: radar
@@ -20,7 +31,7 @@ concurrency:
 jobs:
   verificar:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
@@ -38,12 +49,17 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python run.py --test-telegram
 
-      - name: Verificar ofertas
+      - name: Verificar ofertas (5 vezes, a cada 4 min)
         if: ${{ !inputs.teste_telegram }}
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python run.py
+        run: |
+          if [ "$(date -u +%F)" \< "$CORRENTE_ATE" ]; then
+            python run.py --loop 5 --every 240
+          else
+            python run.py
+          fi
 
       - name: Salvar histórico e painel
         if: ${{ !inputs.teste_telegram }}
@@ -59,4 +75,21 @@ jobs:
               git pull --rebase --autostash && git push && break
               sleep 5
             done
+          fi
+
+      - name: Disparar a próxima execução da corrente
+        if: ${{ always() && !inputs.teste_telegram }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ ! "$(date -u +%F)" \< "$CORRENTE_ATE" ]; then
+            echo "corrente encerrada (após $CORRENTE_ATE); seguindo só pelo cron"; exit 0
+          fi
+          # se já houver outra execução na fila ou rodando, não cria uma segunda corrente
+          outras=$(gh run list --workflow radar.yml --limit 20 --json status,databaseId \
+            --jq "[.[] | select(.databaseId != ${{ github.run_id }}) | select(.status==\"queued\" or .status==\"in_progress\" or .status==\"waiting\" or .status==\"pending\" or .status==\"requested\")] | length")
+          echo "outras execuções ativas: $outras"
+          if [ "$outras" = "0" ]; then
+            gh workflow run radar.yml --ref main
+            echo "próxima execução disparada"
           fi
