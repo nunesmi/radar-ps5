@@ -1661,3 +1661,83 @@ ts,source,query,ok,items,error
 2026-11-27T21:26:51+00:00,KaBuM!,playstation-5-slim-midia-fisica,1,8,
 2026-11-27T21:26:53+00:00,KaBuM!,playstation-5-pro,1,8,
 2026-11-27T21:26:55+00:00,KaBuM!,controle-dualsense,1,25,
+2026-11-27T21:27:11+00:00,Pelando,ps5 slim,0,0,https://www.pelando.com.br/busca/ps5%20slim -> HTTP 403
+2026-11-27T21:27:12+00:00,Pelando,ps5 midia fisica,0,0,https://www.pelando.com.br/busca/ps5%20midia%20fisica -> HTTP 403
+2026-11-27T21:27:14+00:00,Pelando,playstation 5 disk,0,0,https://www.pelando.com.br/busca/playstation%205%20disk -> HTTP 403
+2026-11-27T21:27:16+00:00,Pelando,playstation 5 leitor,0,0,https://www.pelando.com.br/busca/playstation%205%20leitor -> HTTP 403
+2026-11-27T21:27:17+00:00,Pelando,ps5 pro,0,0,https://www.pelando.com.br/busca/ps5%20pro -> HTTP 403
+2026-11-27T21:27:19+00:00,Pelando,dualsense,0,0,https://www.pelando.com.br/busca/dualsense -> HTTP 403
+2026-11-27T21:27:21+00:00,Telegram,pelandobr?ps5,1,20,
+2026-11-27T21:27:23+00:00,Telegram,pelandobr?playstation 5,1,20,
+2026-11-27T21:27:26+00:00,Telegram,pelandobr?dualsense,1,20,
+2026-11-27T21:27:28+00:00,Telegram,cjpromos?ps5,1,20,
+2026-11-27T21:27:30+00:00,Telegram,cjpromos?playstation 5,1,20,
+2026-11-27T21:27:32+00:00,Telegram,cjpromos?dualsense,1,20,
+2026-11-27T21:27:35+00:00,KaBuM!,ps5-slim,1,8,
+2026-11-27T21:27:37+00:00,KaBuM!,playstation-5-slim-midia-fisica,1,8,
+2026-11-27T21:27:39+00:00,KaBuM!,playstation-5-pro,1,8,
+2026-11-27T21:27:41+00:00,KaBuM!,controle-dualsense,1,25,
+2026-11-27T21:31:42+00:00,Pelando,ps5 slim,0,0,https://www.pelando.com.br/busca/ps5%20slim -> HTTP 403
+2026-11-27T21:31:44+00:00,Pelando,ps5 midia fisica,0,0,https://www.pelando.com.br/busca/ps5%20midia%20fisica -> HTTP 403
+2026-11-27T21:31:45+00:00,Pelando,playstation 5 disk,0,0,https://www.pelando.com.br/busca/playstation%205%20disk -> HTTP 403
+2026-11-27T21:31:47+00:00,Pelando,playstation 5 leitor,0,0,https://www.pelando.com.br/busca/playstation%205%20leitor -> HTTP 403
+2026-11-27T21:31:48+00:00,Pelando,ps5 pro,0,0,https://www.pelando.com.br/busca/ps5%20pro -> HTTP 403
+2026-11-27T21:31:50+00:00,Pelando,dualsense,0,0,https://www.pelando.com.br/busca/dualsense -> HTTP 403
+2026-11-27T21:31:52+00:00,Telegram,pelandobr?ps5,1,20,
+2026-11-27T21:31:55+00:00,Telegram,pelandobr?playstation 5,1,20,
+2026-11-27T21:31:57+00:00,Telegram,pelandobr?dualsense,1,20,
+2026-11-27T21:31:59+00:00,Telegram,cjpromos?ps5,1,20,
+2026-11-27T21:32:01+00:00,Telegram,cjpromos?playstation 5,1,20,
+2026-11-27T21:32:04+00:00,Telegram,cjpromos?dualsense,1,20,
+2026-11-27T21:32:06+00:00,KaBuM!,ps5-slim,1,8,
+2026-11-27T21:32:08+00:00,KaBuM!,playstation-5-slim-midia-fisica,1,8,
+2026-11-27T21:32:10+00:00,KaBuM!,playstation-5-pro,1,8,
+2026-11-27T21:32:12+00:00,KaBuM!,controle-dualsense,1,24,
+2026-11-27T21:36:14+00:00,Pelando,ps5 slim,0,0,https://www.pelando.com.br/busca/ps5%20slim -> HTTP 403
+2026-11-27T21:36:16+00:00,Pelando,ps5 midia fisica,0,0,https://www.pelando.com.br/busca/ps5%20midia%20fisica -> HTTP 403
+2026-11-27T21:36:17+00:00,Pelando,playstation 5 disk,0,0,https://www.pelando.com.br/busca/playstation%205%20disk -> HTTP 403
+2026-11-27T21:36:19+00:00,Pelando,playstation 5 leitor,0,0,https://www.pelando.com.br/busca/playstation%205%20leitor -> HTTP 403
+2026-11-27T21:36:21+00:00,Pelando,ps5 pro,0,0,https://www.pelando.com.br/busca/ps5%20pro -> HTTP 403
+2026-11-27T21:36:22+00:00,Pelando,dualsense,0,0,https://www.pelando.com.br/busca/dualsense -> HTTP 403
+2026-11-27T21:36:24+00:00,Telegram,pelandobr?ps5,1,20,
+2026-11-27T21:36:27+00:00,Telegram,pelandobr?playstation 5,1,20,
+2026-11-27T21:36:29+00:00,Telegram,pelandobr?dualsense,1,20,
+2026-11-27T21:36:31+00:00,Telegram,cjpromos?ps5,1,20,
+2026-11-27T21:36:33+00:00,Telegram,cjpromos?playstation 5,1,20,
+2026-11-27T21:36:36+00:00,Telegram,cjpromos?dualsense,1,20,
+2026-11-27T21:36:38+00:00,KaBuM!,ps5-slim,1,8,
+2026-11-27T21:36:40+00:00,KaBuM!,playstation-5-slim-midia-fisica,1,8,
+2026-11-27T21:36:42+00:00,KaBuM!,playstation-5-pro,1,8,
+2026-11-27T21:36:44+00:00,KaBuM!,controle-dualsense,1,24,
+2026-11-27T21:40:46+00:00,Pelando,ps5 slim,0,0,https://www.pelando.com.br/busca/ps5%20slim -> HTTP 403
+2026-11-27T21:40:47+00:00,Pelando,ps5 midia fisica,0,0,https://www.pelando.com.br/busca/ps5%20midia%20fisica -> HTTP 403
+2026-11-27T21:40:49+00:00,Pelando,playstation 5 disk,0,0,https://www.pelando.com.br/busca/playstation%205%20disk -> HTTP 403
+2026-11-27T21:40:50+00:00,Pelando,playstation 5 leitor,0,0,https://www.pelando.com.br/busca/playstation%205%20leitor -> HTTP 403
+2026-11-27T21:40:52+00:00,Pelando,ps5 pro,0,0,https://www.pelando.com.br/busca/ps5%20pro -> HTTP 403
+2026-11-27T21:40:53+00:00,Pelando,dualsense,0,0,https://www.pelando.com.br/busca/dualsense -> HTTP 403
+2026-11-27T21:40:56+00:00,Telegram,pelandobr?ps5,1,20,
+2026-11-27T21:40:58+00:00,Telegram,pelandobr?playstation 5,1,20,
+2026-11-27T21:41:00+00:00,Telegram,pelandobr?dualsense,1,20,
+2026-11-27T21:41:03+00:00,Telegram,cjpromos?ps5,1,20,
+2026-11-27T21:41:05+00:00,Telegram,cjpromos?playstation 5,1,20,
+2026-11-27T21:41:07+00:00,Telegram,cjpromos?dualsense,1,20,
+2026-11-27T21:41:10+00:00,KaBuM!,ps5-slim,1,8,
+2026-11-27T21:41:12+00:00,KaBuM!,playstation-5-slim-midia-fisica,1,8,
+2026-11-27T21:41:14+00:00,KaBuM!,playstation-5-pro,1,8,
+2026-11-27T21:41:16+00:00,KaBuM!,controle-dualsense,1,24,
+2026-11-27T21:45:18+00:00,Pelando,ps5 slim,0,0,https://www.pelando.com.br/busca/ps5%20slim -> HTTP 403
+2026-11-27T21:45:20+00:00,Pelando,ps5 midia fisica,0,0,https://www.pelando.com.br/busca/ps5%20midia%20fisica -> HTTP 403
+2026-11-27T21:45:21+00:00,Pelando,playstation 5 disk,0,0,https://www.pelando.com.br/busca/playstation%205%20disk -> HTTP 403
+2026-11-27T21:45:23+00:00,Pelando,playstation 5 leitor,0,0,https://www.pelando.com.br/busca/playstation%205%20leitor -> HTTP 403
+2026-11-27T21:45:24+00:00,Pelando,ps5 pro,0,0,https://www.pelando.com.br/busca/ps5%20pro -> HTTP 403
+2026-11-27T21:45:26+00:00,Pelando,dualsense,0,0,https://www.pelando.com.br/busca/dualsense -> HTTP 403
+2026-11-27T21:45:28+00:00,Telegram,pelandobr?ps5,1,20,
+2026-11-27T21:45:30+00:00,Telegram,pelandobr?playstation 5,1,20,
+2026-11-27T21:45:33+00:00,Telegram,pelandobr?dualsense,1,20,
+2026-11-27T21:45:35+00:00,Telegram,cjpromos?ps5,1,20,
+2026-11-27T21:45:37+00:00,Telegram,cjpromos?playstation 5,1,20,
+2026-11-27T21:45:39+00:00,Telegram,cjpromos?dualsense,1,20,
+2026-11-27T21:45:42+00:00,KaBuM!,ps5-slim,1,8,
+2026-11-27T21:45:44+00:00,KaBuM!,playstation-5-slim-midia-fisica,1,8,
+2026-11-27T21:45:46+00:00,KaBuM!,playstation-5-pro,1,8,
+2026-11-27T21:45:48+00:00,KaBuM!,controle-dualsense,1,24,
